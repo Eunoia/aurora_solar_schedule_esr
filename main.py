@@ -30,7 +30,6 @@ def schedule(buildings, employees):
     dow = 0
     while dow <= 4 and buildings:
         building = buildings.pop(0)
-        print(building['address'])
         if building['type'] == 'short':
             unqualified_employee_count = 0
 
