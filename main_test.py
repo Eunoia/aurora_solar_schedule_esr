@@ -134,5 +134,39 @@ class TestSkedMoreJobsThanEmployees(unittest.TestCase):
         self.assertEqual(dow, 4)
         self.assertEqual(worker['name'], 'Adam')
 
+
+class TestSkedTallBuildingHasEnoughPeople(unittest.TestCase):
+    """
+    Tests if a work order is created if a group of employees  have 
+    overlapping availability for installing a tall system. This test is to 
+    make sure the code works for tall buildings
+    """
+
+    # @unittest.skip("skipping")
+    def test_schedule(self):
+        employees = [
+            {
+                'name': 'John',
+                'tier': 'certified',
+                'avail': [False, False, False, True, False],
+            },
+            {
+                'name': 'Alex',
+                'tier': 'pending',
+                'avail': [False, False, False, True, False],
+            }
+        ]
+        buildings = [{
+            'address': 'I', 'type': 'tall',
+        }]
+        work_order = main.schedule(buildings, employees)
+        self.assertTrue(work_order)
+        self.assertEqual(len(work_order), 1)
+        dow, building, workers = work_order[0]
+        self.assertEqual(dow, 3)
+        self.assertEqual(building['address'], 'I')
+        self.assertEqual(len(workers), 2)
+
+
 if __name__ == '__main__':
     unittest.main()
