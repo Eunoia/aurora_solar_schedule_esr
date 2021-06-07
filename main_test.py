@@ -142,7 +142,7 @@ class TestSkedTallBuildingHasEnoughPeople(unittest.TestCase):
     make sure the code works for tall buildings
     """
 
-    # @unittest.skip("skipping")
+    @unittest.skip("skipping")
     def test_schedule(self):
         employees = [
             {

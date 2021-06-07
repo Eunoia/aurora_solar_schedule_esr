@@ -52,3 +52,34 @@ def schedule(buildings, employees):
                 dow += 1
 
     return work_order
+
+def schedulePrinter(work_order):
+    days_of_week = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri']
+    for job in work_order:
+        print(f"{days_of_week[job[0]]} Building: {job[1]['address']}, worker: {job[2]['name']}")
+
+if __name__ == '__main__':
+    employees = [
+        {
+            'name': 'John',
+            'tier': 'certified',
+            'avail': [True, False, False, False, True],
+        },
+        {
+            'name': 'Adam',
+            'tier': 'certified',
+            'avail': [False, False, True, False, True],
+        }
+    ]
+    buildings = [
+        {'address': 'i', 'type': 'short'},
+        {'address': 'j', 'type': 'short'},
+        {'address': 'k', 'type': 'short'},
+        {'address': 'l', 'type': 'short'},
+        {'address': 'm', 'type': 'short'},
+        {'address': 'n', 'type': 'short'},
+        {'address': 'o', 'type': 'short'},
+        {'address': 'p', 'type': 'short'},
+    ]
+    work_order = schedule(buildings, employees)
+    schedulePrinter(work_order)
