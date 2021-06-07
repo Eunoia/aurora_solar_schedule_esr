@@ -7,13 +7,20 @@ Only handles scheduling single story buildings with certified employees
 # Data Structures
 
 ## Employees
+```
   {
       'name': 'John',
       'tier': 'certified',
       'avail': [True, False, False, False, True],
   }
+```
 
 ## Buildings
-  {'address': 'i', 'type': 'short'},
+```
+  {
+    'address': 'i',
+    'type': 'short'}
+  }
+```
 
 
